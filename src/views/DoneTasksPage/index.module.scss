@@ -1,13 +1,11 @@
-$base-font: 1rem/1.4 "Oswald", sans-serif;
-
 $link-font: 0.8rem/1.4 "Rubik", sans-serif;
 $link-color: #3F72AF;
 $link-hover-color: #4da6d0;
 $link-visited-color: rgba(96, 96, 145, 0.8);
 $link-active-color: #add;
 
-
 .navbar {
+  margin-top: 30px;
   background-color: #fff;
   border-radius: 20px;
   padding: 0 20px;
@@ -29,43 +27,33 @@ $link-active-color: #add;
 
 }
 
+
 .article {
   margin: 25px 0;
   min-width: 600px;
   background-color: #fff;
   border-radius: 20px;
   padding: 20px 55px;
-  font: $base-font;
+  font: 1rem/1.4 "Oswald", sans-serif;
 
-    &Title {
-      font-size: 40px;
-      text-transform: uppercase;
-      letter-spacing: 30px;
-      text-align: center;
-      margin-bottom: 0.3em;
-    }
-
-    &Line {
-      margin: 20px 0;
-      height: 1px;
-      background-color: #e5e5e5;
-      border: none;
-    }
-
-    &Text {
-      text-align: center;
-      font-weight: 300;
-      letter-spacing: 3px;
-    }
-}
-
-.input {
-  &Name {
-
+  &Title {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 30px;
+    text-align: center;
+    margin-bottom: 0.3em;
   }
 
-  &Button {
-
+  &Line {
+    margin: 20px 0;
+    height: 1px;
+    background-color: #e5e5e5;
+    border: none;
   }
-  height: 100px;
+
+  &Text {
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 3px;
+  }
 }

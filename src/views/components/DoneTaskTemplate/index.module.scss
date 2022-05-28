@@ -1,0 +1,45 @@
+$gray-color: #bbb7b7;
+
+
+
+.template {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  justify-content: center;
+  padding: 9px 10px;
+  max-width: 50vw;
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  &Title {
+    max-width: 66vw;
+    word-wrap: break-word;
+    font: 0.7rem "Rubik", sans-serif;
+    font-weight: 500;
+    color: $gray-color;
+
+    &Text {
+      font: 1rem/1.4 "Oswald", sans-serif;
+      font-weight: 400;
+      color: #000;
+      //line-height: 2rem;
+      margin: 0.5rem 0;
+    }
+  }
+
+  &Time {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &CreatedAt, &DoneAt {
+    font: 0.6rem "Rubik", sans-serif;
+    font-weight: 500;
+    color: $gray-color;
+    margin-right: 10px;
+  }
+
+}

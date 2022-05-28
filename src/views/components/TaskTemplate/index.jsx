@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import styles from './index.module.scss'
 
 
-export const TaskTemplate = ({id, title, onDone, onRemove, onEdited}) => {
+export const TaskTemplate = ({id, title, createdAt, onDone, onRemove, onEdited}) => {
 
     const [checked, setChecked] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
@@ -28,7 +28,8 @@ export const TaskTemplate = ({id, title, onDone, onRemove, onEdited}) => {
                        if (e.target.checked) {
                            setDisabledCheck(true)
                            setTimeout(() => {
-                               onDone(id)
+                               onDone(id, title, createdAt)
+                               onRemove(id)
                            }, 500)
                        }
                    }}/>
