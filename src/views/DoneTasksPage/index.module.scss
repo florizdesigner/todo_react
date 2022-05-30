@@ -36,6 +36,13 @@ $link-active-color: #add;
   padding: 20px 55px;
   font: 1rem/1.4 "Oswald", sans-serif;
 
+  &Empty {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #bbb7b7;
+    border-top: 1px solid #bbb7b7;
+  }
+
   &Title {
     font-size: 40px;
     text-transform: uppercase;

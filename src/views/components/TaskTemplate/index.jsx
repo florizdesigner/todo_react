@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import styles from './index.module.scss'
 
 
-export const TaskTemplate = ({id, title, createdAt, onDone, onRemove, onEdited}) => {
+export const TaskTemplate = ({id, title, createdAt, onDone, onRemove, onEdited, onDoneRemove}) => {
 
     const [checked, setChecked] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
@@ -36,18 +36,18 @@ export const TaskTemplate = ({id, title, createdAt, onDone, onRemove, onEdited})
 
                                const storage = JSON.parse(window.localStorage.getItem('doneTasks'))
 
-                               const removeItem = (id) => {
-                                   const updatedStorage = storage.filter(e => e.id === id)
-                                   // не фильтрует, возвращает тот же массив
-
-                                   window.localStorage.setItem('doneTasks', JSON.stringify(updatedStorage))
-                               }
+                               // const removeItem = (id) => {
+                               //     const updatedStorage = storage.filter(e => e.id === id)
+                               //     // не фильтрует, возвращает тот же массив
+                               //
+                               //     window.localStorage.setItem('doneTasks', JSON.stringify(updatedStorage))
+                               // }
 
                                if (storage.some(e => e.id === id)) {
                                    if (title) {
                                        onRemove(id)
                                    } else {
-                                       removeItem(id)
+                                       onDoneRemove(id)
                                        setChecked(false)
                                        setDisabledCheck(false)
                                        alert('Задача не выполнена, .title пуст')

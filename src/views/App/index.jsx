@@ -18,7 +18,7 @@ export const App = () => {
         state.deleteTask
     ])
 
-    const addDoneTask = useDoneStore(state => state.addDoneTask)
+    const [addDoneTask, deleteDoneTask] = useDoneStore(state => [state.addDoneTask, state.deleteDoneTask])
 
     return (
         <div>
@@ -41,13 +41,18 @@ export const App = () => {
                         <div className={styles.articleText}>Тут ничего нет</div> : tasks.map(task => {
                             return <TaskTemplate key={task.id} id={task.id} title={task.title}
                                                  createdAt={task.createdAt} onDone={addDoneTask} onEdited={updateTask}
-                                                 onRemove={deleteTask}/>
+                                                 onRemove={deleteTask} onDoneRemove={deleteDoneTask}/>
                         })}
                 </section>
 
             </article>
 
-            <input type='button' onClick={() => window.localStorage.removeItem('doneTasks')} value='удалить doneTasks'/>
+            <input type='button' className={styles.deleteDoneTasks} onClick={() => {
+                if (window.confirm('Вы действительно хотите удалить doneTasks? Это действие необратимо и его нельзя будет отменить!')) {
+                    window.localStorage.removeItem('doneTasks')
+                }
+            }}
+                   value='delete doneTasks'/>
         </div>
     )
 }

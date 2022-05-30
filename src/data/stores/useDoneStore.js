@@ -8,9 +8,10 @@ function isToDoStore() {
     return 'doneTasks'
 }
 
-// localStorageUpdate is middleware
+// localStorageUpdate ise middleware
 
 const localStorageUpdate = (config) => (set, get, api) => config((nextState, ...args) => {
+
     if (isToDoStore(nextState)) {
         window.localStorage.setItem('doneTasks', JSON.stringify(
             nextState.tasks
@@ -23,13 +24,16 @@ const getCurrentDoneState = () => {
     try {
         return JSON.parse(window.localStorage.getItem('doneTasks') || '[]');
     } catch (err) {
-        // window.localStorage.setItem('doneTasks', '[]')
+        window.localStorage.setItem('doneTasks', '[]')
         alert(err)
     }
 
     return []
 
 }
+
+
+
 
 export const useDoneStore = create(localStorageUpdate(devtools((set, get) => ({
     doneTasks: getCurrentDoneState(),

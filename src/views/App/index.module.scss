@@ -13,6 +13,7 @@ $link-active-color: #add;
   padding: 0 20px;
   text-align: center;
 
+
   a {
     text-decoration: none;
     font: $link-font;
@@ -21,6 +22,7 @@ $link-active-color: #add;
 
   a:hover {
     color: $link-hover-color;
+
   }
 
   a:active {
@@ -69,3 +71,27 @@ $link-active-color: #add;
   }
   height: 100px;
 }
+
+.deleteDoneTasks {
+  display: block;
+  margin: 0 auto;
+
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: -4px 3px 3px -2px rgba(114, 163, 201, 0.42);
+  -moz-box-shadow: -4px 3px 3px -2px rgba(114, 163, 201, 0.42);
+  box-shadow: -4px 3px 3px -2px rgba(114, 163, 201, 0.42);
+  transition: ease-in 0.3s;
+}
+
+input.deleteDoneTasks:hover {
+  cursor: pointer;
+  background-color: #7e91ec;
+  color: #fff;
+  //transition: ease-in 0.3s;
+}
+
