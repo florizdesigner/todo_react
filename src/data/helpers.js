@@ -16,6 +16,5 @@ export const getTime = () => {
         }
     }
 
-    const actuallyTime = `${setValueTime(date.getHours())}:${setValueTime(date.getMinutes())}:${setValueTime(date.getSeconds())}, ${setValueTime(date.getDate())} ${months[date.getMonth()]} ${date.getFullYear()} `
-    return actuallyTime
+    return `${setValueTime(date.getHours())}:${setValueTime(date.getMinutes())}:${setValueTime(date.getSeconds())}, ${setValueTime(date.getDate())} ${months[date.getMonth()]} ${date.getFullYear()} `
 }

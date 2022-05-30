@@ -1,6 +1,8 @@
 $gray-color: #bbb7b7;
 
-
+div.template:not(:last-child) {
+  margin-bottom: 10px;
+}
 
 .template {
   width: 100%;
@@ -12,7 +14,6 @@ $gray-color: #bbb7b7;
   max-width: 50vw;
   background: #f1f1f1;
   border-radius: 10px;
-  margin-bottom: 10px;
 
   &Title {
     max-width: 66vw;

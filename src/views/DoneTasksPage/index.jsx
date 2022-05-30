@@ -17,9 +17,19 @@ const DoneTasksPage = () => {
 
             <article className={styles.article}>
                 {doneTasks.map(task => {
-                    return <DoneTaskTemplate key={task.id} id={task.id} title={task.title}
-                                             createdAt={task.createdAt}
-                                             doneAt={task.doneAt}/>
+                    if (task != null) {
+                        if (task.id != null) {
+                            return <DoneTaskTemplate key={task.id} id={task.id} title={task.title}
+                                                     createdAt={task.createdAt}
+                                                     doneAt={task.doneAt}/>
+                        }
+                        else {
+                            return <div>Error (task.id is null)! Task: {task.title}</div>
+                        }
+                    } else {
+                        return <div>Error! Task is null</div>
+                    }
+
                 })}
             </article>
         </div>

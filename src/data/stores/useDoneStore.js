@@ -1,10 +1,10 @@
 import create from 'zustand'
 
-import {generateId, getTime} from '../helpers';
+import {getTime} from '../helpers';
 import {devtools} from 'zustand/middleware';
 
 
-function isToDoStore () {
+function isToDoStore() {
     return 'doneTasks'
 }
 
@@ -21,9 +21,9 @@ const localStorageUpdate = (config) => (set, get, api) => config((nextState, ...
 
 const getCurrentDoneState = () => {
     try {
-        return JSON.parse(window.localStorage.getItem('doneTasks') || '[]' );
+        return JSON.parse(window.localStorage.getItem('doneTasks') || '[]');
     } catch (err) {
-        window.localStorage.setItem('doneTasks', '[]')
+        // window.localStorage.setItem('doneTasks', '[]')
         alert(err)
     }
 
@@ -44,11 +44,15 @@ export const useDoneStore = create(localStorageUpdate(devtools((set, get) => ({
             doneAt: getTime()
         }
 
-        set({
-            tasks: [task].concat(doneTasks)
-        })
+        // здесь проверка по факту не нужна, так как мы проверяем значения id, title на моменте нажатия на чекбокс
 
-        console.log(doneTasks)
+        if (task) {
+            set({
+                tasks: [task].concat(doneTasks)
+            })
+        } else {
+            alert('Произошла ошибка')
+        }
     },
     // удаление таски из donetask
     deleteDoneTask: (id) => {

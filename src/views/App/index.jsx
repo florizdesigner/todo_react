@@ -46,6 +46,8 @@ export const App = () => {
                 </section>
 
             </article>
+
+            <input type='button' onClick={() => window.localStorage.removeItem('doneTasks')} value='удалить doneTasks'/>
         </div>
     )
 }
