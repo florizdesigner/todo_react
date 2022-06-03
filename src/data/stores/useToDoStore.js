@@ -1,10 +1,10 @@
 import create from 'zustand'
 
-import {generateId} from '../helpers';
+import {generateId, getTime} from '../helpers';
 import {devtools} from 'zustand/middleware';
 
 
-function isToDoStore () {
+function isToDoStore() {
     return 'tasks'
 }
 
@@ -21,15 +21,15 @@ const localStorageUpdate = (config) => (set, get, api) => config((nextState, ...
 
 const getCurrentState = () => {
     try {
-        return JSON.parse(window.localStorage.getItem('tasks') || '[]' );
+        return JSON.parse(window.localStorage.getItem('tasks') || '[]');
     } catch (err) {
         window.localStorage.setItem('tasks', '[]')
         alert(err)
     }
-
     return []
-
 }
+
+
 
 export const useToDoStore = create(localStorageUpdate(devtools((set, get) => ({
     tasks: getCurrentState(),
@@ -38,14 +38,12 @@ export const useToDoStore = create(localStorageUpdate(devtools((set, get) => ({
         const newTask = {
             id: generateId(),
             title,
-            createdAt: Date.now()
+            createdAt: getTime()
         }
 
         set({
             tasks: [newTask].concat(tasks)
         })
-
-        console.log(tasks)
     },
     updateTask: (id, title) => {
         const {tasks} = get()

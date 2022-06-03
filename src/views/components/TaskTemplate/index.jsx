@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import styles from './index.module.scss'
 
 
-export const TaskTemplate = ({id, title, onDone, onRemove, onEdited}) => {
+export const TaskTemplate = ({id, title, createdAt, onDone, onRemove, onEdited, onDoneRemove}) => {
 
     const [checked, setChecked] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
@@ -28,7 +28,36 @@ export const TaskTemplate = ({id, title, onDone, onRemove, onEdited}) => {
                        if (e.target.checked) {
                            setDisabledCheck(true)
                            setTimeout(() => {
-                               onDone(id)
+
+                               // if (.includes(e => e.id = id))
+                               // вариант проверки через поиск по ид в массиве выполненных тасок,
+                               // чтобы проверить, была ли она туда добавлена
+                               onDone(id, title, createdAt)
+
+                               const storage = JSON.parse(window.localStorage.getItem('doneTasks'))
+
+                               // const removeItem = (id) => {
+                               //     const updatedStorage = storage.filter(e => e.id === id)
+                               //     // не фильтрует, возвращает тот же массив
+                               //
+                               //     window.localStorage.setItem('doneTasks', JSON.stringify(updatedStorage))
+                               // }
+
+                               if (storage.some(e => e.id === id)) {
+                                   if (title) {
+                                       onRemove(id)
+                                   } else {
+                                       onDoneRemove(id)
+                                       setChecked(false)
+                                       setDisabledCheck(false)
+                                       alert('Задача не выполнена, .title пуст')
+                                   }
+                               } else {
+                                   setChecked(false)
+                                   setDisabledCheck(false)
+                                   alert('Задача не выполнена, не найдено значение .id')
+                               }
+
                            }, 500)
                        }
                    }}/>
