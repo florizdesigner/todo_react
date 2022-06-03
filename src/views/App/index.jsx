@@ -7,6 +7,7 @@ import {TaskTemplate} from '../components/TaskTemplate'
 import {useDoneStore} from '../../data/stores/useDoneStore'
 
 import styles from './index.module.scss'
+import PaymentWidget from '../components/PaymentWidget';
 
 ///////////////////////////////
 
@@ -47,12 +48,14 @@ export const App = () => {
 
             </article>
 
+            <PaymentWidget/>
+
             <input type='button' className={styles.deleteDoneTasks} onClick={() => {
                 if (window.confirm('Вы действительно хотите удалить doneTasks? Это действие необратимо и его нельзя будет отменить!')) {
                     window.localStorage.removeItem('doneTasks')
                 }
-            }}
-                   value='delete doneTasks'/>
+            }} value='delete doneTasks'/>
+
         </div>
     )
 }

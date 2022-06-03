@@ -1,0 +1,68 @@
+.modalWrapper {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  padding: 20px;
+  border-radius: 20px;
+  height: 200px;
+  width: 300px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &Title {
+    font-size: 20px;
+    margin-bottom: 10px;
+
+  }
+
+  &Text {
+    font-size: 12px;
+    padding-bottom: 50px;
+  }
+}
+
+.pulse {
+  width: 22.4px;
+  height: 22.4px;
+  border-radius: 50%;
+  background: #bb1280;
+  box-shadow: 0 0 0 0 rgba(59, 24, 128, 0.5);
+  animation: pulse-kefe91md 1.5s infinite linear;
+  position: relative;
+}
+
+.pulse:before,
+.pulse:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(255, 1, 174, 0.5);
+  animation: inherit;
+  animation-delay: -0.5s;
+}
+
+.pulse:after {
+  animation-delay: -1s;
+}
+
+@keyframes pulse-kefe91md {
+  0% {
+
+  }
+  to {
+    box-shadow: 0 0 0 44.8px #0000;
+  }
+}
